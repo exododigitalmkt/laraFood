@@ -1,14 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', "Permissões do Perfil {$profile->name}")
+@section('title', "Planos do Perfil {$profile->name}")
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a class="active" href="{{ route('profiles.index') }}">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}">Perfis</a></li>
+        <li class="breadcrumb-item active"><a class="active" href="{{ route('profiles.plans', $profile->id) }}">Planos</a></li>
     </ol>
-    <h1>Permissões do Perfil <strong>{{ $profile->name }}</strong>
-        <a href="{{ route('profiles.permissions.available', $profile->id) }}" class="btn btn-dark">ADD NOVA PERMISSÃO</a></h1>
+    <h1>Planos do Perfil <strong>{{ $profile->name }}</strong>
 @stop
 
 @section('content')
@@ -22,13 +22,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($permissions as $permission)
+                    @foreach ($plans as $plan)
                     <tr>
                         <td>
-                            {{ $permission->name }}
+                            {{ $plan->name }}
                         </td>
                         <td>
-                            <a href="{{ route('profiles.permission.detach', [$profile->id, $permission->id]) }}" class="btn btn-danger">DESVINCULAR</a>
+                            <a href="{{ route('plans.profile.detach', [$plan->id, $profile->id]) }}" class="btn btn-danger">DESVINCULAR</a>
                         </td>
                     </tr>
                     @endforeach
@@ -37,9 +37,9 @@
         </div>
         <div class="card-footer">
             @if (isset($filters))
-                {!! $permissions->appends($filters)->links() !!}
+                {!! $plans->appends($filters)->links() !!}
             @else
-                {!! $permissions->links() !!}
+                {!! $plans->links() !!}
             @endif
         </div>
     </div>

@@ -11,6 +11,9 @@ class Permission extends Model
 
     protected $fillable = ['name', 'description'];
 
+    /**
+     * Get Search
+     */
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%{$filter}%")
@@ -18,7 +21,6 @@ class Permission extends Model
                     ->latest()
                     ->paginate();
         return $results;
-
     }
 
     /**

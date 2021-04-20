@@ -25,7 +25,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Preço</th>
-                        <th style="width: 250px;">Ações</th>
+                        <th style="width: 300px;">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,9 +38,10 @@
                             R$ {{ number_format($plan->price, 2, ',', '.') }}
                         </td>
                         <td>
-                            <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary">Detalhes</a>
+                            <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary">DETALHES</a>
                             <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-info">EDITAR</a>
                             <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">VER</a>
+                            <a href="{{ route('plans.profiles', $plan->id) }}" class="btn btn-dark"><i class="fas fa-address-book"></i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -11,6 +11,9 @@ class Profile extends Model
 
     protected $fillable = ['name', 'description'];
 
+    /**
+     * Get Search
+     */
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%{$filter}%")
@@ -18,7 +21,6 @@ class Profile extends Model
                     ->latest()
                     ->paginate();
         return $results;
-
     }
 
     /**
@@ -27,6 +29,33 @@ class Profile extends Model
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);
+    }
+
+    /**
+     * Get Plans
+     */
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class);
+    }
+
+    /**
+     * Permission not liked with this profile
+     */
+    public function permissionAvailable($filter = null)
+    {
+        $permissions = Permission::whereNotIn('permissions.id', function($query){
+            $query->select('permission_profile.permission_id');
+            $query->from('permission_profile');
+            $query->whereRaw("permission_profile.profile_id={$this->id}");
+        })
+        ->where(function ($queryFilter) use ($filter){
+            if ($filter)
+                $queryFilter->where('permissions.name', 'LIKE', "%{$filter}%");
+        })
+        ->paginate();
+
+        return $permissions;
     }
 
 }

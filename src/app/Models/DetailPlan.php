@@ -13,6 +13,9 @@ class DetailPlan extends Model
 
     protected $fillable = ['name'];
 
+    /**
+     * Get Plan
+     */
     public function plan()
     {
         $this->belongsTo(Plan::class);
