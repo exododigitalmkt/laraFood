@@ -26,7 +26,7 @@ class Product extends Model
         $results = $this->where('title', 'LIKE', "%{$filter}%")
                     ->orWhere('description', 'LIKE', "%{$filter}%")
                     ->latest()
-                    ->paginate(10);
+                    ->paginate();
         return $results;
 
     }
