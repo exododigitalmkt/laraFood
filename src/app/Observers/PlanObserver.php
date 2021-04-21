@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class PlanObserver
 {
     /**
-     * Handle the Plan "created" event.
+     * Handle the Plan "creating" event.
      *
      * @param  \App\Models\Plan  $plan
      * @return void
@@ -19,7 +19,7 @@ class PlanObserver
     }
 
     /**
-     * Handle the Plan "updated" event.
+     * Handle the Plan "updating" event.
      *
      * @param  \App\Models\Plan  $plan
      * @return void

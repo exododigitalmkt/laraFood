@@ -28,6 +28,14 @@ class Plan extends Model
     }
 
     /**
+     * Get Tenants
+     */
+    public function tenants()
+    {
+        return $this->hasMany(Tenant::class);
+    }
+
+    /**
      * Get Search
      */
     public function search($filter = null)

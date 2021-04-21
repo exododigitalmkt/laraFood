@@ -6,11 +6,15 @@ use App\Http\Controllers\{
     Admin\ACL\PermissionController,
     Admin\ACL\PermissionProfileController,
     Admin\ACL\PlanProfileController,
-};
 
+    Site\SiteController,
+};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')
+        ->middleware('auth')
+        ->group(function(){
 
     /**
      * Routes Plan x Profile
@@ -71,8 +75,14 @@ Route::prefix('admin')->group(function(){
     Route::get('/', [PlanController::class, 'index'])->name('admin.index');
 });
 
+/**
+ * Routes Site
+ */
+Route::get('/plan/{url}', [SiteController::class, 'plan'])->name('plan.subscription');
+Route::get('/', [SiteController::class, 'index'])->name('site.home');
 
+/**
+ * Auth Routes
+ */
+Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
