@@ -36,7 +36,7 @@ class PlanProfileController extends Controller
 
         $filters = $request->except('_token');
        
-        $profiles = $plan->profileAvailable($request->filter);
+        $profiles = $plan->profilesAvailable($request->filter);
 
         return view('admin.pages.plans.profiles.available', [
             'plan' => $plan,

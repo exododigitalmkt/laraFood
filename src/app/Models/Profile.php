@@ -42,7 +42,7 @@ class Profile extends Model
     /**
      * Permission not liked with this profile
      */
-    public function permissionAvailable($filter = null)
+    public function permissionsAvailable($filter = null)
     {
         $permissions = Permission::whereNotIn('permissions.id', function($query){
             $query->select('permission_profile.permission_id');

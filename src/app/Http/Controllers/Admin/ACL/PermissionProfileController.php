@@ -36,7 +36,7 @@ class PermissionProfileController extends Controller
 
         $filters = $request->except('_token');
        
-        $permissions = $profile->permissionAvailable($request->filter);
+        $permissions = $profile->permissionsAvailable($request->filter);
 
         return view('admin.pages.profiles.permissions.available', [
             'profile' => $profile,

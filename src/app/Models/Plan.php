@@ -51,7 +51,7 @@ class Plan extends Model
     /**
      * Perfils not liked with this plan
      */
-    public function profileAvailable($filter = null)
+    public function profilesAvailable($filter = null)
     {
         $profiles = Profile::whereNotIn('profiles.id', function($query){
             $query->select('plan_profile.profile_id');
