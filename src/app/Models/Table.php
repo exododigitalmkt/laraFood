@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Table extends Model
 {
-    use HasFactory;
-    use TenantTrait;
+    use HasFactory, TenantTrait;
 
     protected $fillable = ['identify', 'description'];
 
