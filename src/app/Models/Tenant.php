@@ -26,4 +26,16 @@ class Tenant extends Model
     {
         return $this->belongsTo(Plan::class);
     }
+
+    /**
+     * Get Search
+     */
+    public function search($filter = null)
+    {
+        $results = $this->where('name', 'LIKE', "%{$filter}%")
+                    ->orWhere('email', "%{$filter}%")
+                    ->latest()
+                    ->paginate();
+        return $results;
+    }
 }

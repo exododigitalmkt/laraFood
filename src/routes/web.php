@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\{
     ACL\PermissionProfileController,
     ACL\PlanProfileController,
     TableController,
+    TenantController,
 };
 use App\Http\Controllers\{
     Site\SiteController,
@@ -22,6 +23,12 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
+
+        /**
+         * Routes Tenants
+         */
+        Route::any('tenants/search', [TenantController::class, 'search'])->name('tenants.search');
+        Route::resource('tenants', TenantController::class);
 
         /**
          * Routes Tables
