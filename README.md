@@ -1,3 +1,2 @@
 # sistemaEAD
-# sistemaEAD
 # laraFood
