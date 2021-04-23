@@ -8,7 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class TenantControllerProductController extends Controller
+class ProductController extends Controller
 {
     private $repository;
 
