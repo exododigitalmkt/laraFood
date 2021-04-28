@@ -23,6 +23,7 @@ class TenantFormRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($this->token_company);
         return [
             'token_company' => [
                 'required',
