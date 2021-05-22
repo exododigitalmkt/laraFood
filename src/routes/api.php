@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\{
     TenantController,
     CategoryController,
+    OrderController,
     ProductController,
     TableController,
 };
@@ -25,6 +26,9 @@ Route::group([
 ], function () {
     Route::get('auth/me', [AuthClientController::class, 'me']);
     Route::post('auth/logout', [AuthClientController::class, 'logout']);
+
+    Route::get('auth/v1/my-orders', [OrderController::class, 'myOrders']);
+    Route::post('auth/v1/orders', [OrderController::class, 'store']);
 });
 
 Route::group([
@@ -34,15 +38,17 @@ Route::group([
     Route::get('tenants/{uuid}', [TenantController::class, 'show']);
     Route::get('tenants', [TenantController::class, 'index']);
 
-    Route::get('categories/{url}', [CategoryController::class, 'show']);
+    Route::get('categories/{identify}', [CategoryController::class, 'show']);
     Route::get('categories', [CategoryController::class, 'getCategoriesByTenant']);
 
     Route::get('tables/{identify}', [TableController::class, 'show']);
     Route::get('tables', [TableController::class, 'getTablesByTenant']);
 
-    Route::get('products/{flag}', [ProductController::class, 'show']);
+    Route::get('products/{identify}', [ProductController::class, 'show']);
     Route::get('products', [ProductController::class, 'getProductsByTenant']);
 
     Route::post('client', [RegisterController::class, 'store']);
 
+    Route::post('orders', [OrderController::class, 'store']);
+    Route::get('orders/{identify}', [OrderController::class, 'show']);
 });
