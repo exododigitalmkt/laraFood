@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\{
     TenantController,
     CategoryController,
+    EvaluationController,
     OrderController,
     ProductController,
     TableController,
@@ -26,6 +27,8 @@ Route::group([
 ], function () {
     Route::get('auth/me', [AuthClientController::class, 'me']);
     Route::post('auth/logout', [AuthClientController::class, 'logout']);
+
+    Route::post('auth/v1/orders/{identifyOrder}/evaluations', [EvaluationController::class, 'store']);
 
     Route::get('auth/v1/my-orders', [OrderController::class, 'myOrders']);
     Route::post('auth/v1/orders', [OrderController::class, 'store']);
