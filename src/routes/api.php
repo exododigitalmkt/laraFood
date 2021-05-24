@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'namespace' => 'Api'
 ], function () {
-    Route::post('sanctum/token', [AuthClientController::class, 'auth']);
+    Route::post('auth/register', [RegisterController::class, 'store']);
+    Route::post('auth/token', [AuthClientController::class, 'auth']);
 });
 
 Route::group([
@@ -49,8 +50,6 @@ Route::group([
 
     Route::get('products/{identify}', [ProductController::class, 'show']);
     Route::get('products', [ProductController::class, 'getProductsByTenant']);
-
-    Route::post('client', [RegisterController::class, 'store']);
 
     Route::post('orders', [OrderController::class, 'store']);
     Route::get('orders/{identify}', [OrderController::class, 'show']);
