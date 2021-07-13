@@ -6,7 +6,7 @@ networks:
 services:
   nginx: 
     image: nginx:stable-alpine
-    container_name: nginx_laravel2
+    container_name: nginx_larafood
     ports: 
       - "80:80"
     volumes:
@@ -21,11 +21,11 @@ services:
 
   mysql:
     image: mysql:5.7.29
-    container_name: mysql_laravel2
+    container_name: mysql_larafood
     restart: unless-stopped
     tty: true
     ports: 
-      - "9306:3306"
+      - "3306:3306"
     environment: 
       MYSQL_DATABASE: laravel_db
       MYSQL_USER: laravel_db
@@ -42,7 +42,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: php_laravel2
+    container_name: php_larafood
     volumes: 
       - ./src:/var/www/html
     ports: 
@@ -52,7 +52,7 @@ services:
   
   composer:
     image: composer:latest
-    container_name: composer_laravel2
+    container_name: composer_larafood
     volumes: 
       - ./src:/var/www/html
     working_dir: /var/www/html
@@ -63,7 +63,7 @@ services:
   
   npm: 
     image: node:13.7
-    container_name: npm_laravel2
+    container_name: npm_larafood
     volumes: 
       - ./src:/var/www/html
     working_dir: /var/www/html
@@ -73,7 +73,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: artisan_laravel2
+    container_name: artisan_larafood
     volumes: 
       - ./src:/var/www/html
     depends_on: 
