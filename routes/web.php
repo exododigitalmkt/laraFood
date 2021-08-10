@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\{
     ACL\RoleController,
     ACL\PermissionRoleController,
     ACL\RoleUserController,
+    DashboardController,
     TableController,
     TenantController,
 };
@@ -147,7 +148,7 @@ Route::prefix('admin')
         /**
          * Home Dashboard
          */
-        Route::get('/', [PlanController::class, 'index'])->name('admin.index');
+        Route::get('/', [DashboardController::class, 'home'])->name('admin.index');
     });
 
 /**

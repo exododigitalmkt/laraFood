@@ -15,6 +15,15 @@ use App\Http\Controllers\Api\Auth\{
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+Route::group([
+    'namespace' => 'Api'
+], function () {
+    Route::get('/', function(){
+        return response()->json(['message' => 'ok']);
+    });
+});
+
 Route::group([
     'namespace' => 'Api'
 ], function () {
