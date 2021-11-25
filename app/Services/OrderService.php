@@ -117,7 +117,7 @@ class OrderService
     }
 
     private function getTableIdByOrder(string $uuid = '')
-    {   
+    {
         if($uuid) {
             $table = $this->tableRepository->getTableByUuid($uuid);
 
@@ -131,5 +131,15 @@ class OrderService
     private function getClientIdByOrder()
     {
         return auth()->check() ? auth()->user()->id : '';
+    }
+
+    public function getOrdersByTenantId(int $idTenant, string $status, string $date)
+    {
+        return $this->orderRepository->getOrdersByTenantId($idTenant, $status, $date);
+    }
+
+    public function updateStatusOrder(string $identify, string $status)
+    {
+        return $this->orderRepository->updateStatusOrder($identify, $status);
     }
 }

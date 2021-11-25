@@ -46,7 +46,7 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>  
+            </table>
         </div>
         <div class="card-footer">
             @if (isset($filters))

@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\{
     ACL\PermissionRoleController,
     ACL\RoleUserController,
     DashboardController,
+    OrderController,
     TableController,
     TenantController,
 };
@@ -27,6 +28,9 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
+
+        // Orders
+        Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 
         /**
          * Routes Role x User
